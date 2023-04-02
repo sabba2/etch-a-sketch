@@ -26,10 +26,10 @@ function createGrid(gridSize) {
   }
 }
 
-button.addEventListener("click", () => {
-  let gridSize;
-  do gridSize = prompt("Enter a grid size from 1 to 100");
-  while (gridSize < 0 || gridSize > 100 || isNaN(gridSize));
-});
+function emptyContainer() {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+}
 
-createGrid(32);
+createGrid(16);
