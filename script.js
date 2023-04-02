@@ -32,4 +32,18 @@ function emptyContainer() {
   }
 }
 
+button.addEventListener("click", () => {
+  let gridSize;
+  while (
+    gridSize < 0 ||
+    gridSize > 100 ||
+    isNaN(gridSize) ||
+    gridSize === null
+  ) {
+    gridSize = prompt("Enter a grid size from 1 to 100");
+  }
+  emptyContainer();
+  createGrid(gridSize);
+});
+
 createGrid(16);
