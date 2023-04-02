@@ -1,24 +1,35 @@
 const container = document.querySelector("div.container");
+const button = document.querySelector("button");
 container.style.display = "flex";
 container.style.flexWrap = "wrap";
 container.style.justifyContent = "center";
-container.style.minWidth = "832px";
-for (let i = 1; i < 257; i++) {
-  let square = document.createElement("div");
-  container.appendChild(square);
-  square.style.width = "50px";
-  square.style.height = "50px";
-  square.style.backgroundColor = "lightblue";
-  square.style.border = "1px solid black";
-  square.style.flex = "0 0 50px";
-  square.addEventListener("mouseover", () => {
-    square.style.backgroundColor = "royalblue";
-  }); // create function that leaves a pixelated trail
+container.style.minWidth = "800px";
 
-  if (i % 16 === 0) {
-    let lineBreak = document.createElement("div");
-    container.appendChild(lineBreak);
-    lineBreak.style.height = "0";
-    lineBreak.style.flex = "1 0 100%";
+function createGrid(gridSize) {
+  for (let i = 1; i < gridSize ** 2 + 1; i++) {
+    let square = document.createElement("div");
+    container.appendChild(square);
+    square.style.height = `${800 / gridSize}px`;
+    square.style.backgroundColor = "royalblue";
+    square.style.flex = `0 0 ${800 / gridSize}px`;
+
+    square.addEventListener("mouseover", () => {
+      square.style.backgroundColor = "lightblue";
+    });
+
+    if (i % gridSize === 0) {
+      let lineBreak = document.createElement("div");
+      container.appendChild(lineBreak);
+      lineBreak.style.height = "0";
+      lineBreak.style.flex = "1 0 100%";
+    } // adds flex item that breaks items onto new line
   }
 }
+
+button.addEventListener("click", () => {
+  let gridSize;
+  do gridSize = prompt("Enter a grid size from 1 to 100");
+  while (gridSize < 0 || gridSize > 100 || isNaN(gridSize));
+});
+
+createGrid(32);
