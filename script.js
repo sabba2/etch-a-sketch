@@ -1,5 +1,5 @@
-let square = document.createElement("div");
+const container = document.querySelector("div.container");
 for (let i = 0; i < 16; i++) {
   let square = document.createElement("div");
-  document.body.appendChild(square);
+  container.appendChild(square);
 }
