@@ -3,7 +3,6 @@ container.style.display = "flex";
 container.style.flexWrap = "wrap";
 container.style.justifyContent = "center";
 container.style.minWidth = "832px";
-
 for (let i = 1; i < 257; i++) {
   let square = document.createElement("div");
   container.appendChild(square);
@@ -12,6 +11,10 @@ for (let i = 1; i < 257; i++) {
   square.style.backgroundColor = "lightblue";
   square.style.border = "1px solid black";
   square.style.flex = "0 0 50px";
+  square.addEventListener("mouseover", () => {
+    square.style.backgroundColor = "royalblue";
+  }); // create function that leaves a pixelated trail
+
   if (i % 16 === 0) {
     let lineBreak = document.createElement("div");
     container.appendChild(lineBreak);
