@@ -1,11 +1,15 @@
 button {
-  margin: 12px auto 20px auto;
+  margin: 6px auto 14px auto;
   font-size: 24px;
 }
 
 .btn-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-width: 960px;
+  min-width: 860px;
+}
+
+.container {
+  margin: 0 auto;
+  border: 5px solid black;
 }

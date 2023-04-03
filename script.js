@@ -4,14 +4,15 @@ container.style.display = "flex";
 container.style.flexWrap = "wrap";
 container.style.justifyContent = "center";
 container.style.minWidth = "860px";
+container.style.maxWidth = container.style.minWidth;
 
 function createGrid(gridSize) {
   for (let i = 1; i < gridSize ** 2 + 1; i++) {
     let square = document.createElement("div");
     container.appendChild(square);
-    square.style.height = `${860 / gridSize - 2}px`; // subtract border widths
-    square.style.flex = `0 0 ${860 / gridSize - 2}px`;
-    square.style.border = "1px solid black";
+    square.style.height = `${860 / gridSize}px`; // subtract border widths
+    square.style.flex = `0 0 ${860 / gridSize}px`;
+
     square.style.backgroundColor = "lightblue";
     changeColor(square);
 
