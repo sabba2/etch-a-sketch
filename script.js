@@ -12,11 +12,7 @@ function createGrid(gridSize) {
     square.style.height = `${860 / gridSize - 2}px`; // subtract border widths
     square.style.flex = `0 0 ${860 / gridSize - 2}px`;
     square.style.border = "1px solid black";
-
-    square.style.backgroundColor = "royalblue";
-    square.addEventListener("mouseover", () => {
-      square.style.backgroundColor = "lightblue";
-    });
+    changeColor(square);
 
     if (i % gridSize === 0) {
       let lineBreak = document.createElement("div");
@@ -33,19 +29,34 @@ function emptyContainer() {
   }
 }
 
-function randomColor() {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  const rgb = `rgb(${r},${g},${b})`;
-  return rgb;
+function randomRGBNumber() {
+  return Math.floor(Math.random() * 256);
 }
 
-function changeRGB(element) {
-  square.style.backgroundColor = "royalblue";
-  square.addEventListener("mouseover", () => {
-    square.style.backgroundColor = "lightblue";
-  });
+function changeColor(element) {
+  element.style.backgroundColor = "lightblue";
+
+  element.addEventListener(
+    "mouseover",
+    () => {
+      let r = randomRGBNumber();
+      let b = randomRGBNumber();
+      let g = randomRGBNumber();
+      let selectedColor = `rgb(${r},${g},${b})`;
+      element.style.backgroundColor = selectedColor;
+      let tenPercentR = r / 10;
+      let tenPercentG = g / 10;
+      let tenPercentB = b / 10;
+      element.addEventListener("mouseover", () => {
+        r = r - tenPercentR;
+        g = g - tenPercentG;
+        b = b - tenPercentB;
+        selectedColor = `rgb(${r},${g},${b})`;
+        element.style.backgroundColor = selectedColor;
+      });
+    },
+    { once: true }
+  );
 }
 
 button.addEventListener("click", () => {
