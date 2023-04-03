@@ -69,7 +69,8 @@ button.addEventListener("click", () => {
     gridSize < 0 ||
     gridSize > 100 ||
     isNaN(gridSize) ||
-    gridSize === null
+    gridSize === null ||
+    gridSize === ""
   ) {
     gridSize = prompt("Enter a grid size from 1 to 100");
   }
