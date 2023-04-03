@@ -3,16 +3,17 @@ const button = document.querySelector("button");
 container.style.display = "flex";
 container.style.flexWrap = "wrap";
 container.style.justifyContent = "center";
-container.style.minWidth = "800px";
+container.style.minWidth = "860px";
 
 function createGrid(gridSize) {
   for (let i = 1; i < gridSize ** 2 + 1; i++) {
     let square = document.createElement("div");
     container.appendChild(square);
-    square.style.height = `${800 / gridSize}px`;
-    square.style.backgroundColor = "royalblue";
-    square.style.flex = `0 0 ${800 / gridSize}px`;
+    square.style.height = `${860 / gridSize - 2}px`; // subtract border widths
+    square.style.flex = `0 0 ${860 / gridSize - 2}px`;
+    square.style.border = "1px solid black";
 
+    square.style.backgroundColor = "royalblue";
     square.addEventListener("mouseover", () => {
       square.style.backgroundColor = "lightblue";
     });
@@ -30,6 +31,21 @@ function emptyContainer() {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
+}
+
+function randomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  const rgb = `rgb(${r},${g},${b})`;
+  return rgb;
+}
+
+function changeRGB(element) {
+  square.style.backgroundColor = "royalblue";
+  square.addEventListener("mouseover", () => {
+    square.style.backgroundColor = "lightblue";
+  });
 }
 
 button.addEventListener("click", () => {
