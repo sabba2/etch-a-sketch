@@ -39,24 +39,28 @@ function changeColor(element) {
   element.addEventListener(
     "mouseover",
     () => {
-      let r = randomRGBNumber();
-      let b = randomRGBNumber();
-      let g = randomRGBNumber();
-      let selectedColor = `rgb(${r},${g},${b})`;
-      element.style.backgroundColor = selectedColor;
-      let tenPercentR = r / 10;
-      let tenPercentG = g / 10;
-      let tenPercentB = b / 10;
-      element.addEventListener("mouseover", () => {
-        r = r - tenPercentR;
-        g = g - tenPercentG;
-        b = b - tenPercentB;
-        selectedColor = `rgb(${r},${g},${b})`;
-        element.style.backgroundColor = selectedColor;
-      });
+      makeDarker(element);
     },
     { once: true }
   );
+}
+
+function makeDarker(element) {
+  let r = randomRGBNumber();
+  let b = randomRGBNumber();
+  let g = randomRGBNumber();
+  let selectedColor = `rgb(${r},${g},${b})`;
+  element.style.backgroundColor = selectedColor;
+  let tenPercentR = r / 10;
+  let tenPercentG = g / 10;
+  let tenPercentB = b / 10;
+  element.addEventListener("mouseover", () => {
+    r = r - tenPercentR;
+    g = g - tenPercentG;
+    b = b - tenPercentB;
+    selectedColor = `rgb(${r},${g},${b})`;
+    element.style.backgroundColor = selectedColor;
+  });
 }
 
 button.addEventListener("click", () => {
