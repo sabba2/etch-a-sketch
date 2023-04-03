@@ -12,6 +12,7 @@ function createGrid(gridSize) {
     square.style.height = `${860 / gridSize - 2}px`; // subtract border widths
     square.style.flex = `0 0 ${860 / gridSize - 2}px`;
     square.style.border = "1px solid black";
+    square.style.backgroundColor = "lightblue";
     changeColor(square);
 
     if (i % gridSize === 0) {
@@ -34,23 +35,21 @@ function randomRGBNumber() {
 }
 
 function changeColor(element) {
-  element.style.backgroundColor = "lightblue";
-
   element.addEventListener(
     "mouseover",
     () => {
-      makeDarker(element);
+      let r = randomRGBNumber();
+      let b = randomRGBNumber();
+      let g = randomRGBNumber();
+      let selectedColor = `rgb(${r},${g},${b})`;
+      element.style.backgroundColor = selectedColor;
+      makeDarker(element, r, g, b);
     },
     { once: true }
   );
 }
 
-function makeDarker(element) {
-  let r = randomRGBNumber();
-  let b = randomRGBNumber();
-  let g = randomRGBNumber();
-  let selectedColor = `rgb(${r},${g},${b})`;
-  element.style.backgroundColor = selectedColor;
+function makeDarker(element, r, g, b) {
   let tenPercentR = r / 10;
   let tenPercentG = g / 10;
   let tenPercentB = b / 10;
